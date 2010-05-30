@@ -1,0 +1,19 @@
+DESCRIPTION="GNOME font management application"
+HOMEPAGE="http://code.google.com/p/font-manager/"
+SRC_URI="http://font-manager.googlecode.com/files/${PN}_${PV}.tar.bz2"
+
+PATCH_URI="
+	0.5.3-dll.patch
+	0.5.3-logname.patch
+"
+
+DISTCLEANFILES="src/ui/export.py"
+
+src_compile() {
+	cd ${S}
+	cygautoreconf
+	lndirs
+	cd ${B}
+	cygconf
+	cygmake
+}
