@@ -1,9 +1,9 @@
 DESCRIPTION="GNOME font management application"
 HOMEPAGE="http://code.google.com/p/font-manager/"
-SRC_URI="http://font-manager.googlecode.com/files/${PN}_${PV}.tar.bz2"
+SRC_URI="http://font-manager.googlecode.com/files/${P}.tar.bz2"
 
 PATCH_URI="
-	0.5.3-dll.patch
+	0.5.4-cygwin-dll.patch
 	0.5.3-logname.patch
 "
 
