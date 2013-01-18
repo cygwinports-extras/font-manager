@@ -1,0 +1,26 @@
+inherit python
+
+NAME="font-manager"
+VERSION=0.5.7
+RELEASE=2
+CATEGORY="Graphics GNOME X11"
+SUMMARY="GNOME font management application"
+DESCRIPTION="Font Manager is intended to be a simple font management
+application suitable for the needs of most desktop users, and even some
+graphics designers who may need to manage just a few thousand font files."
+HOMEPAGE="http://code.google.com/p/font-manager/"
+SRC_URI="http://font-manager.googlecode.com/files/${P}.tar.bz2"
+PATCH_URI="0.5.7-gcc45.patch"
+
+REQUIRES="file-roller gucharmap xdg-utils"
+
+DISTCLEANFILES="src/ui/export.py"
+
+src_compile() {
+	cd ${S}
+	cygautoreconf
+	lndirs
+	cd ${B}
+	cygconf --enable-winlib
+	cygmake
+}

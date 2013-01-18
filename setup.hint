@@ -1,7 +1,0 @@
-category: Graphics X11
-requires: file-roller gucharmap libfontconfig1 libfreetype6 libglib2.0_0 libpango1.0_0 libsqlite3_0 python python-cairo python-dbus python-gobject python-gtk2.0 python-libxml2 python-pynotify python-reportlab
-sdesc: "GNOME font management application"
-ldesc: "Font Manager is intended to be a simple font management 
-application suitable for the needs of most desktop users, and even some 
-graphics designers who may need to manage just a few thousand font 
-files."
