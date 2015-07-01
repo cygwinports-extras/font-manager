@@ -1,26 +1,25 @@
-inherit python
+inherit gnome2
 
 NAME="font-manager"
-VERSION=0.5.7
-RELEASE=2
-CATEGORY="Graphics GNOME X11"
+VERSION=0.7.2
+RELEASE=1
+CATEGORY="Graphics"
 SUMMARY="GNOME font management application"
 DESCRIPTION="Font Manager is intended to be a simple font management
 application suitable for the needs of most desktop users, and even some
 graphics designers who may need to manage just a few thousand font files."
-HOMEPAGE="http://code.google.com/p/font-manager/"
-SRC_URI="http://font-manager.googlecode.com/files/${P}.tar.bz2"
-PATCH_URI="0.5.7-gcc45.patch"
+HOMEPAGE="https://fontmanager.github.io/"
+SRC_URI="https://github.com/FontManager/master/archive/${VERSION}/font-manager-${VERSION}.tar.gz"
+SRC_DIR="master-${VERSION}"
 
-REQUIRES="file-roller gucharmap xdg-utils"
+DIFF_EXCLUDES="POTFILES.*"
 
-DISTCLEANFILES="src/ui/export.py"
+# still not sure what the issue is with using the autoconf-generated version
+MAKEOPTS+=" LIBTOOL=/usr/bin/libtool"
 
 src_compile() {
-	cd ${S}
-	cygautoreconf
 	lndirs
 	cd ${B}
-	cygconf --enable-winlib
-	cygmake
+	gnome2_autoreconf
+	gnome2_compile --srcdir=. HAVE_FILE_ROLLER=yes
 }
